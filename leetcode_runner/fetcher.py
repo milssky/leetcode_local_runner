@@ -15,29 +15,29 @@ def get_client(credentials: dict[str, str]) -> Client:
 def fetch_problem(client: Client, problem_slug: str) -> Problem:
     query = gql(
         '''
-            query getQuestionDetail($titleSlug: String!) {
-                question(titleSlug: $titleSlug) {
-                    questionId
-                    title
-                    difficulty
-                    likes
-                    dislikes
-                    isLiked
-                    isPaidOnly
-                    stats
-                    status
-                    content
-                    topicTags {
-                        name
-                    }
-                    codeSnippets {
-                        lang
-                        langSlug
-                        code
-                    }
-                    sampleTestCase
+        query getQuestionDetail($titleSlug: String!) {
+            question(titleSlug: $titleSlug) {
+                questionId
+                title
+                difficulty
+                likes
+                dislikes
+                isLiked
+                isPaidOnly
+                stats
+                status
+                content
+                topicTags {
+                    name
                 }
+                codeSnippets {
+                    lang
+                    langSlug
+                    code
+                }
+                sampleTestCase
             }
+        }
         '''
     )
     result = client.execute(query, variable_values={'titleSlug': problem_slug})
