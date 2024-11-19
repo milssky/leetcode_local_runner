@@ -59,7 +59,7 @@ def fetch_problem_test_cases(client: Client, problem_slug: str) -> Tests:
     return Tests(**result)
 
 
-def fetch_problem_data(client, problem_slug) -> tuple[Question, TestQuestion]:
+def fetch_problem_data(client, problem_slug) -> tuple[Question, list[TestQuestion]]:
     problem = fetch_problem(client, problem_slug)
     test_cases = fetch_problem_test_cases(client, problem_slug)
-    return problem.question, test_cases.question
+    return problem.question, test_cases.question.test_cases
