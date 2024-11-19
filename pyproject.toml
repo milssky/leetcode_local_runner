@@ -8,8 +8,15 @@ readme = "README.md"
 [tool.poetry.dependencies]
 python = "^3.12"
 pydantic = "^2.9.2"
-pytest = "^8.3.3"
+gql = {extras = ["requests"], version = "^3.5.0"}
 
+[tool.poetry.scripts]
+
+leetcode_runner = "leetcode_runner:main"
+
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.3.3"
 
 [build-system]
 requires = ["poetry-core"]
